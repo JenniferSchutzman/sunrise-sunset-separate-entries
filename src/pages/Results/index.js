@@ -50,21 +50,23 @@ export default function Results() {
     useEffect(() => {
         if (dataForApi.length !== 0) {
             const getAPIdata = async (passUpData) => {
-                console.log("passUpData", passUpData)
                 try {
                     let response = await fetch(
-                        `https://api.sunrise-sunset.org/json?lat=${passUpData.lat}&lng=${passUpData.long}`
+                        `https://api.sunrise-sunset.org/json?lat=${passUpData.lat}&lng=${passUpData.long}&formatted=0`
                     );
                     const apiResponse = await response.json();
-                    if (apiResponse.results.sunrise && apiResponse.status === "OK") {
-                        const sunrise = apiResponse.results.sunrise
-                        const sunset = apiResponse.results.sunset
+                    if (apiResponse.results && apiResponse.status === "OK") {
+                        const dateSunset = new Date(apiResponse.results.sunset)
+                        const dateSunrise = new Date(apiResponse.results.sunrise)
+                        const sunset = moment.utc(dateSunset).local().format('h:mm A');
+                        const sunrise = moment.utc(dateSunrise).local().format('h:mm A');
                         const data = dataForApi.filter(item => item.id === passUpData.id)
+
                         const locationSunriseSunset = data.map((item) => {
                             return {
                                 location: item.location,
-                                sunrise: sunrise,
-                                sunset: sunset,
+                                sunrise: sunrise.toString(),
+                                sunset: sunset.toString(),
                                 id: passUpData.id,
                             };
                         })
@@ -103,7 +105,6 @@ export default function Results() {
                                         )
                                 )
                         })
-
                 })
         }
     }, [dataForApi, location.state]);

@@ -2,8 +2,6 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
-import '../../index.css';
-
 const LatLongForm = () => {
   const {
     register,
@@ -263,7 +261,7 @@ const LatLongForm = () => {
                       <input
                         name="long4"
                         id="long4"
-                        defaultValue="374.0721"
+                        defaultValue="74.0721"
                         placeholder="00.000000"
                         aria-invalid={errors.long2 ? "true" : "false"}
                         type="text"
@@ -277,6 +275,61 @@ const LatLongForm = () => {
               </div>
               {/* LOCATION FIVE */}
               <div className="pt-8">
+                <div>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    <label> Location 5</label>
+                  </h3>
+                </div>
+                <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                  <div className="sm:col-span-2">
+                    <label htmlFor="city5" >City Name </label>
+                    <div className="mt-1">
+                      <input
+                        name="city5"
+                        id="city5"
+                        placeholder="Type here"
+                        defaultValue="Denver"
+                        aria-invalid={errors.city5 ? "true" : "false"}
+                        type="text"
+                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        {...register("city5", { required: true })}
+                      />
+                      {errors.city5 && <span className="text-red-300 text-xs">* This field is required</span>}
+                    </div>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="lat5" >Latitude </label>
+                    <div className="mt-1">
+                      <input
+                        name="lat5"
+                        id="lat5"
+                        aria-invalid={errors.lat5 ? "true" : "false"}
+                        defaultValue="39.7392"
+                        placeholder="00.000000"
+                        type="text"
+                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        {...register("lat5", { required: true })}
+                      />
+                      {errors.lat5 && <span className="text-red-300 text-xs">* This field is required</span>}
+                    </div>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor="long5" >Longitude </label>
+                    <div className="mt-1">
+                      <input
+                        name="long5"
+                        id="long5"
+                        defaultValue="104.9903"
+                        placeholder="00.000000"
+                        aria-invalid={errors.long2 ? "true" : "false"}
+                        type="text"
+                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        {...register("long5", { required: true })}
+                      />
+                      {errors.long5 && <span className="text-red-300 text-xs">* This field is required</span>}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
