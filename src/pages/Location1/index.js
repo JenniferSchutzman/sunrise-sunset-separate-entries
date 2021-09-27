@@ -7,7 +7,7 @@ const Location1 = (props) => {
     const data = initialState
     return (
         <section className="App w-full flex justify-center items-center p-5">
-            <div className="w-full max-w-md bg-white-800">
+            <div className="w-full max-w-md">
                 <div className="space-y-8 divide-y divide-gray-200">
                     <Header />
                     <LocationEntry
