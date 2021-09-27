@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ResultsCard from "../../components/ResultsCard";
 import { useLocation } from "react-router-dom";
+import Header from '../../components/Header'
 import moment from 'moment'
 
 
@@ -78,6 +79,7 @@ export default function Results() {
 
     return (
         <>
+            <Header />
             {dataForCards && dataForCards.map((item) => {
                 return <ResultsCard data={item} key={item} />;
             })}
