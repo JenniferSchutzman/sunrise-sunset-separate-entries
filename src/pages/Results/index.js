@@ -76,17 +76,11 @@ export default function Results() {
         }
     }, [dataForApi, location.state]);
 
-    console.log("dataForCards", dataForCards);
-
     return (
         <>
-            {dataForCards &&
-                (
-                    dataForCards.map((item) => {
-                        return <ResultsCard data={item} key={item} />;
-                    })
-                )
-            }
+            {dataForCards && dataForCards.map((item) => {
+                return <ResultsCard data={item} key={item} />;
+            })}
         </>
     );
 }

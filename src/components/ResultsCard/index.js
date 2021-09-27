@@ -6,7 +6,7 @@ const ResultsCard = (data) => {
   return (
     <>
       {item && (
-        <div className="p-5 bg-green-500 rounded-lg m-4">
+        <div className="p-5 bg-gray-800 rounded-lg m-4">
           <h3 className="text-xl leading-6 font-medium text-white">
             {item.location.toUpperCase()}
           </h3>
@@ -14,7 +14,7 @@ const ResultsCard = (data) => {
           <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <div className="relative bg-white px-4 py-5 sm:py-6 sm:px-6 shadow rounded-lg overflow-hidden">
               <dt>
-                <div className="absolute bg-indigo-500 rounded-md p-3">
+                <div className="absolute bg-yellow-500 rounded-md p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 text-white"
@@ -43,7 +43,7 @@ const ResultsCard = (data) => {
 
             <div className="relative bg-white pt-5 px-4 py-5 sm:py-6 sm:px-6 shadow rounded-lg overflow-hidden">
               <dt>
-                <div className="absolute bg-indigo-500 rounded-md p-3">
+                <div className="absolute bg-gray-500 rounded-md p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 text-white"
@@ -73,7 +73,6 @@ const ResultsCard = (data) => {
         </div>
       )}
     </>
-
   );
 };
 
