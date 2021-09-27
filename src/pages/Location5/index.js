@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 import LocationEntry from '../../components/LocationEntry'
 
 
-const Location2 = (props) => {
+const Location5 = (props) => {
     const location = useLocation()
     const data = location.state
     return (
@@ -13,7 +13,7 @@ const Location2 = (props) => {
                 <div className="space-y-8 divide-y divide-gray-200">
                     <Header />
                     <LocationEntry
-                        locationNumber={2}
+                        locationNumber={5}
                         data={data}
                     />
                 </div>
@@ -22,6 +22,6 @@ const Location2 = (props) => {
     )
 }
 
-export default Location2;
+export default Location5;
 
 

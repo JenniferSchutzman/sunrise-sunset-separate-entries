@@ -11,39 +11,7 @@ export default function Results() {
 
     useEffect(() => {
         if (location.state !== []) {
-            const data = [
-                {
-                    id: 1,
-                    location: `${location.state.city1}`,
-                    lat: `${location.state.lat1}`,
-                    long: `${location.state.long1}`,
-                },
-                {
-                    id: 2,
-                    location: `${location.state.city2}`,
-                    lat: `${location.state.lat2}`,
-                    long: `${location.state.long2}`,
-                },
-                {
-                    id: 3,
-                    location: `${location.state.city3}`,
-                    lat: `${location.state.lat3}`,
-                    long: `${location.state.long3}`,
-                },
-                {
-                    id: 4,
-                    location: `${location.state.city4}`,
-                    lat: `${location.state.lat4}`,
-                    long: `${location.state.long4}`,
-                },
-                {
-                    id: 5,
-                    location: `${location.state.city5}`,
-                    lat: `${location.state.lat5}`,
-                    long: `${location.state.long5}`,
-                },
-            ];
-            setDataForApi(data);
+            setDataForApi(location.state);
         }
     }, [location.state]);
 

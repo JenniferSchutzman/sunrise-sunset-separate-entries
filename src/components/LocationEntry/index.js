@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom';
-import initialState from '../../pages/Location1/initialState';
-
+import { useHistory } from 'react-router-dom';
 
 const LocationEntry = ({
     locationNumber,
+    data,
 }) => {
     const [cityNameValue, setCityNameValue] = useState('')
     const [latValue, setLatValue] = useState()
@@ -13,56 +12,50 @@ const LocationEntry = ({
     const [errorLat, setErrorLat] = useState(false)
     const [errorLong, setErrorLong] = useState(false)
     const [dataValidated, setDataValidated] = useState(false)
-    const [dataState, setDataState] = useState(initialState)
+    const [dataReady, setDataReady] = useState(false)
     const history = useHistory();
-    const location = useLocation()
-    // console.log('dataState', dataState)
-    console.log('location.state', location.state)
-    useEffect(() => {
-        locationNumber !== 1 ? setDataState(location.state) : setDataState(initialState)
-    }, [locationNumber, location])
+
+    console.log('data', data)
 
     useEffect(() => {
-        errorCityName || errorLat || errorLong ? setDataValidated(false) : setDataValidated(true)
-    }, [errorCityName, errorLat, errorLong])
-
-    console.log(dataValidated)
-
-    useEffect(() => {
-        if (dataValidated === true) {
-            // console.log('inside data validated', dataValidated)
-            const dataToPassNext = dataState.map(item => {
-                if (item.id === locationNumber) {
-                    return {
-                        id: item.id,
-                        location: cityNameValue,
-                        lat: latValue,
-                        long: longValue,
+        if (dataReady === true) {
+            const dataToPassNext =
+                data.map(item => {
+                    if (item.id === locationNumber) {
+                        return {
+                            id: item.id,
+                            location: cityNameValue,
+                            lat: latValue,
+                            long: longValue,
+                        }
                     }
-                }
-                return item
-            })
-            // will need to spread into initial state and then filter outduplicate if existing
-            console.log('dataToPassNext', dataToPassNext)
+                    return item
+                })
             const routeToPassNext = locationNumber !== 5 ? `/location${locationNumber + 1}` : '/results'
-            console.log('rtoueToPassNext', routeToPassNext)
             if (dataToPassNext && routeToPassNext) {
-                console.log('inside if')
                 history.push({
                     pathname: routeToPassNext,
                     state: dataToPassNext
                 })
             }
         }
-    }, [dataValidated])
+
+    }, [dataReady])
+
+
+    useEffect(() => {
+        errorCityName || errorLat || errorLong ? setDataValidated(false) : setDataValidated(true)
+    }, [errorCityName, errorLat, errorLong])
+
 
     const checkValidation = () => {
-        console.log(('cityName', cityNameValue))
-        console.log('lat', latValue)
-        console.log('long', longValue)
         cityNameValue === '' ? setErrorCityName(true) : setErrorCityName(false)
         !latValue ? setErrorLat(true) : setErrorLat(false)
         !longValue ? setErrorLong(true) : setErrorLong(false)
+
+        if (cityNameValue && latValue && longValue && dataValidated) {
+            setDataReady(true)
+        }
     }
 
     return (
@@ -135,7 +128,7 @@ const LocationEntry = ({
                 <div className="flex justify-end">
                     <button
                         type="button"
-                        onClick={checkValidation}
+                        onClick={() => checkValidation()}
                         className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         Next
