@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
@@ -38,7 +39,6 @@ const LocationEntry = ({
                 })
             }
         }
-
     }, [dataReady])
 
 
@@ -56,6 +56,12 @@ const LocationEntry = ({
             setDataReady(true)
         }
     }
+
+    const handleKeypress = e => {
+        if (e.keyCode === 13) {
+            checkValidation();
+        }
+    };
 
     return (
         <div className="pt-8">
@@ -128,6 +134,7 @@ const LocationEntry = ({
                     <button
                         type="button"
                         onClick={() => checkValidation()}
+                        onKeyPress={handleKeypress}
                         className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         Next
