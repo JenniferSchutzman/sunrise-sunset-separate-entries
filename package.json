@@ -5,20 +5,14 @@
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@tailwindcss/forms": "^0.3.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "autoprefixer": "^9.8.7",
     "moment": "^2.29.1",
     "postcss": "^7.0.38",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.16.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
-    "react-timezone-select": "^1.1.11",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
-    "web-vitals": "^1.1.2"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",

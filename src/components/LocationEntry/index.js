@@ -15,7 +15,6 @@ const LocationEntry = ({
     const [dataReady, setDataReady] = useState(false)
     const history = useHistory();
 
-    console.log('data', data)
 
     useEffect(() => {
         if (dataReady === true) {

@@ -29,7 +29,6 @@ export default function Results() {
                         const sunset = moment.utc(dateSunset).local().format('h:mm A');
                         const sunrise = moment.utc(dateSunrise).local().format('h:mm A');
                         const data = dataForApi.filter(item => item.id === passUpData.id)
-
                         const locationSunriseSunset = data.map((item) => {
                             return {
                                 location: item.location,
